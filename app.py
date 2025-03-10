@@ -30,7 +30,7 @@ def preprocess_image(image):
 # Streamlit UI
 st.markdown("""
     <h1 style="text-align:center; color:#0066cc;">🩺 Pneumonia Detection AI</h1>
-    <p style="text-align:center;">Upload a Chest X-ray image and let AI detect if it's pneumonic or normal.</p>
+    <p style="text-align:center;"color: #0066cc>Upload a Chest X-ray image and let AI detect if it's pneumonic or normal.</p>
         <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
