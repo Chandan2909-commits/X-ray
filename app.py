@@ -154,6 +154,6 @@ if uploaded_file is not None:
 
 # ✅ Custom Button Styling
 st.markdown(
-    "<style>div.stButton > button {background-color: #0066cc; color: white; padding: 12px 25px; border-radius: 8px; font-size: 16px;}</style>",
+    "<style>div.stButton > button {background-color: #0066cc; color: #808080; padding: 12px 25px; border-radius: 8px; font-size: 16px;}</style>",
     unsafe_allow_html=True
 )
