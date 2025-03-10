@@ -26,13 +26,14 @@ def preprocess_image(image):
     image = np.expand_dims(image, axis=0)
     return image
 
-# ✅ Custom CSS for the Light Theme
+# ✅ Custom CSS for the Light Theme with All Grey Text
 st.markdown("""
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
         body, .stApp {
             background-color: #f9f9ff;
+            color: #666666 !important; /* Make all text grey */
         }
 
         /* Title */
@@ -41,7 +42,7 @@ st.markdown("""
             font-size: 44px;
             font-weight: 700;
             text-align: center;
-            color: #4285f4;
+            color: #666666 !important;
             margin-bottom: 5px;
         }
 
@@ -50,7 +51,7 @@ st.markdown("""
             font-family: 'Roboto', sans-serif;
             font-size: 18px;
             text-align: center;
-            color: #444;
+            color: #666666 !important;
             margin-bottom: 30px;
         }
 
@@ -59,14 +60,14 @@ st.markdown("""
             border-radius: 10px !important;
             background-color: #ffffff !important;
             border: 2px solid #d4d4f7 !important;
-            color: #333 !important;
+            color: #666666 !important;
             padding: 15px !important;
         }
 
         /* Button Styling */
         .stButton>button {
             background-color: #ebeaff;
-            color: black;
+            color: #666666 !important;
             font-size: 18px;
             padding: 12px 25px;
             border-radius: 8px;
@@ -89,17 +90,16 @@ st.markdown("""
             border-radius: 8px;
             width: 100%;
             margin-top: 20px;
+            color: #666666 !important;
         }
 
         .pneumonia {
             background-color: #ffcccc; /* Light Red */
-            color: #990000;
             border: 1px solid #ff9999;
         }
 
         .normal {
             background-color: #ccffcc; /* Light Green */
-            color: #006600;
             border: 1px solid #99ff99;
         }
 
@@ -156,6 +156,6 @@ if uploaded_file is not None:
 
 # ✅ Custom Button Styling
 st.markdown(
-    "<style>div.stButton > button {background-color: #ebeaff; color: black; padding: 12px 25px; border-radius: 8px; font-size: 16px;}</style>",
+    "<style>div.stButton > button {background-color: #ebeaff; color: #666666 !important; padding: 12px 25px; border-radius: 8px; font-size: 16px;}</style>",
     unsafe_allow_html=True
 )
