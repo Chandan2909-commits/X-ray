@@ -60,7 +60,7 @@ st.markdown("""
         .stFileUploader {
             border-radius: 10px !important;
             background-color: #ebeaff !important;
-            color: white !important;
+            color:#666 !important;
             padding: 15px !important;
         }
 
