@@ -34,6 +34,7 @@ st.markdown("""
         /* Background and main container */
         .stApp {
             background-color: #ebeaff;
+            color: black;
         }
 
         /* Title Styling */
