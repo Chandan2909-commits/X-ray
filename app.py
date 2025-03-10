@@ -65,7 +65,7 @@ st.markdown("""
 
         /* Button Styling */
         .stButton>button {
-            background: linear-gradient(135deg, #6A11CB, #2575FC);
+            background-color:#ebeaff ;
             color: white;
             font-size: 18px;
             padding: 12px 25px;
@@ -76,7 +76,7 @@ st.markdown("""
         
         .stButton>button:hover {
             background: linear-gradient(135deg, #2575FC, #6A11CB);
-            transform: scale(1.05);
+            transform: scale(1.07);
             transition: all 0.3s ease-in-out;
         }
 
