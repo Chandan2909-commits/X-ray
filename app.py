@@ -26,17 +26,12 @@ def preprocess_image(image):
     image = np.expand_dims(image, axis=0)  # Add batch dimension
     return image
 
-# ✅ Custom CSS for improved styling
+
 st.markdown("""
        <h1 style="text-align:center; color:#0066cc;">🩺 Pneumonia Detection AI</h1>
     <p style="text-align:center;"color: #0066cc>Upload a Chest X-ray image and let AI detect if it's pneumonic or normal.</p>
 """, unsafe_allow_html=True)
 
-# ✅ Display Title & Subtitle
-st.markdown("<h1 class='title'>🩺 Pneumonia Detection AI</h1>", unsafe_allow_html=True)
-st.markdown("<p class='subtitle'>Upload a Chest X-ray image and let AI detect if it's pneumonic or normal.</p>", unsafe_allow_html=True)
-
-# ✅ Upload Section
 uploaded_file = st.file_uploader("📤 Upload Chest X-ray", type=["png", "jpg", "jpeg"])
 
 # ✅ Image Display & Prediction Section
@@ -80,8 +75,4 @@ if uploaded_file is not None:
     except Exception as e:
         st.error(f"⚠️ Error processing image: {e}")
 
-# ✅ Custom Button Styling
-st.markdown(
-    "<style>div.stButton > button {background-color: #0066cc; color: #808080; padding: 12px 25px; border-radius: 8px; font-size: 16px;}</style>",
-    unsafe_allow_html=True
-)
+
