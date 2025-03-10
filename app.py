@@ -58,7 +58,7 @@ st.markdown("""
         /* Upload Box */
         .stFileUploader {
             border-radius: 10px !important;
-            background-color: #20242A !important;
+            background-color: #ebeaff !important;
             color: white !important;
             padding: 15px !important;
         }
