@@ -65,7 +65,7 @@ st.markdown("""
 
         /* Button Styling */
         .stButton>button {
-            background-color:#ebeaff ;
+            background-color: #20242A;
             color: white;
             font-size: 18px;
             padding: 12px 25px;
