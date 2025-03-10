@@ -32,9 +32,56 @@ st.markdown("""
     <h1 style="text-align:center; color:#0066cc;">🩺 Pneumonia Detection AI</h1>
     <p style="text-align:center;">Upload a Chest X-ray image and let AI detect if it's pneumonic or normal.</p>
         <style>
-        .stApp { background-color: #f0f2f6; }
-        .stButton>button { background-color: #FF5733; color: white; }
-        .stTextInput>div>div>input { color: #333; font-size: 18px; }
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        /* Background and main container */
+        .stApp {
+            background-color: #EAEFF5;
+        }
+
+        /* Title Styling */
+        .title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            text-align: center;
+            color: #007BFF;
+        }
+
+        /* Subtitle */
+        .subtitle {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* Upload Box */
+        .stFileUploader {
+            border-radius: 10px !important;
+            background-color: #20242A !important;
+            color: white !important;
+            padding: 15px !important;
+        }
+
+        /* Button Styling */
+        .stButton>button {
+            background: linear-gradient(135deg, #6A11CB, #2575FC);
+            color: white;
+            font-size: 18px;
+            padding: 12px 25px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .stButton>button:hover {
+            background: linear-gradient(135deg, #2575FC, #6A11CB);
+            transform: scale(1.05);
+            transition: all 0.3s ease-in-out;
+        }
+
     </style>
 """, unsafe_allow_html=True)
 
