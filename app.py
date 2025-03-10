@@ -101,6 +101,9 @@ st.markdown("""
             background-color: #28A745; /* Green */
             color: white;
         }
+        .info{
+        color: black
+        }
 
     </style>
 """, unsafe_allow_html=True)
