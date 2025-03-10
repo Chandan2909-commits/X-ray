@@ -31,6 +31,11 @@ def preprocess_image(image):
 st.markdown("""
     <h1 style="text-align:center; color:#0066cc;">🩺 Pneumonia Detection AI</h1>
     <p style="text-align:center;">Upload a Chest X-ray image and let AI detect if it's pneumonic or normal.</p>
+        <style>
+        .stApp { background-color: #f0f2f6; }
+        .stButton>button { background-color: #FF5733; color: white; }
+        .stTextInput>div>div>input { color: #333; font-size: 18px; }
+    </style>
 """, unsafe_allow_html=True)
 
 uploaded_file = st.file_uploader("Upload Chest X-ray", type=["png", "jpg", "jpeg"])
