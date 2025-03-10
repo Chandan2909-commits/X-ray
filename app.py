@@ -1,11 +1,10 @@
 import streamlit as st
-
-# ✅ Set page config FIRST before any other Streamlit command
-st.set_page_config(page_title="Pneumonia Detector", page_icon="🩺", layout="wide")
-
 import tensorflow as tf
 import numpy as np
 from PIL import Image
+
+# ✅ Set page config FIRST before any other Streamlit command
+st.set_page_config(page_title="Pneumonia Detector", page_icon="🩺", layout="wide")
 
 # Load the trained model
 @st.cache_resource
@@ -27,12 +26,9 @@ def preprocess_image(image):
     image = np.expand_dims(image, axis=0)  # Add batch dimension
     return image
 
-# Streamlit UI
-st.set_page_config(page_title="Pneumonia Detection AI", layout="wide")
+# ✅ Custom CSS for improved styling
 st.markdown("""
-    <h1 style="text-align:center; color:#0066cc;">🩺 Pneumonia Detection AI</h1>
-    <p style="text-align:center;"color: #0066cc>Upload a Chest X-ray image and let AI detect if it's pneumonic or normal.</p>
-        <style>
+    <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
         /* Background and main container */
@@ -43,10 +39,11 @@ st.markdown("""
         /* Title Styling */
         .title {
             font-family: 'Roboto', sans-serif;
-            font-size: 42px;
+            font-size: 44px;
             font-weight: 700;
             text-align: center;
             color: #007BFF;
+            margin-bottom: 10px;
         }
 
         /* Subtitle */
@@ -83,28 +80,57 @@ st.markdown("""
             transition: all 0.3s ease-in-out;
         }
 
+        /* Custom Styling for Results */
+        .result {
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .pneumonia {
+            background-color: #FF4C4C; /* Red */
+            color: white;
+        }
+
+        .normal {
+            background-color: #28A745; /* Green */
+            color: white;
+        }
+
     </style>
 """, unsafe_allow_html=True)
 
-uploaded_file = st.file_uploader("Upload Chest X-ray", type=["png", "jpg", "jpeg"])
+# ✅ Display Title & Subtitle
+st.markdown("<h1 class='title'>🩺 Pneumonia Detection AI</h1>", unsafe_allow_html=True)
+st.markdown("<p class='subtitle'>Upload a Chest X-ray image and let AI detect if it's pneumonic or normal.</p>", unsafe_allow_html=True)
 
+# ✅ Upload Section
+uploaded_file = st.file_uploader("📤 Upload Chest X-ray", type=["png", "jpg", "jpeg"])
+
+# ✅ Image Display & Prediction Section
 if uploaded_file is not None:
     try:
         image = Image.open(uploaded_file)
 
+        # Layout for Image & Analysis
         col1, col2 = st.columns([1, 2])
+        
         with col1:
             st.image(image, caption="Uploaded X-ray", use_column_width=True)
 
         with col2:
-            st.info("Analyzing the X-ray...")
+            st.info("🔍 Analyzing the X-ray...")
 
             if model is not None:
                 # Process the image
                 processed_image = preprocess_image(image)
 
                 # Debugging: Check input shape
-                st.write(f"Processed Image Shape: {processed_image.shape}")  
+                st.write(f"🖼 Processed Image Shape: {processed_image.shape}")  
 
                 # Make prediction
                 prediction = model.predict(processed_image)
@@ -117,19 +143,17 @@ if uploaded_file is not None:
 
                 # Display results
                 if confidence > 0.5:
-                    st.error(f"⚠️ Pneumonia Detected (Confidence: {confidence:.2%})")
+                    st.markdown(f"<div class='result pneumonia'>⚠️ Pneumonia Detected (Confidence: {confidence:.2%})</div>", unsafe_allow_html=True)
                 else:
-                    st.success(f"✅ No Pneumonia Detected (Confidence: {1 - confidence:.2%})")
+                    st.markdown(f"<div class='result normal'>✅ No Pneumonia Detected (Confidence: {1 - confidence:.2%})</div>", unsafe_allow_html=True)
             else:
                 st.error("⚠️ Model is not loaded. Please check your model file.")
 
     except Exception as e:
         st.error(f"⚠️ Error processing image: {e}")
 
-# Custom Button Styling
+# ✅ Custom Button Styling
 st.markdown(
-    "<style>div.stButton > button {background-color: #0066cc; color: white; padding: 10px 20px; border-radius: 10px;}</style>",
+    "<style>div.stButton > button {background-color: #0066cc; color: white; padding: 12px 25px; border-radius: 8px; font-size: 16px;}</style>",
     unsafe_allow_html=True
 )
-this is the code of my app.py help me improve the ui of this ... and not the functionality
-
