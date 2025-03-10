@@ -3,14 +3,14 @@ import tensorflow as tf
 import numpy as np
 from PIL import Image
 
-# ✅ Set page config FIRST before any other Streamlit command
+# ✅ Set page config
 st.set_page_config(page_title="Pneumonia Detector", page_icon="🩺", layout="wide")
 
 # Load the trained model
 @st.cache_resource
 def load_model():
     try:
-        model = tf.keras.models.load_model("pneumonia_detector_latest.h5")  # Use latest model name
+        model = tf.keras.models.load_model("pneumonia_detector_latest.h5")
         return model
     except Exception as e:
         st.error(f"⚠️ Error loading model: {e}")
@@ -20,30 +20,29 @@ model = load_model()
 
 # Function to preprocess image
 def preprocess_image(image):
-    image = image.convert("RGB")  # Ensure RGB format
-    image = image.resize((150, 150))  # Resize to match model training
-    image = np.array(image, dtype=np.float32) / 255.0  # Normalize (0-1 scale)
-    image = np.expand_dims(image, axis=0)  # Add batch dimension
+    image = image.convert("RGB")
+    image = image.resize((150, 150))
+    image = np.array(image, dtype=np.float32) / 255.0
+    image = np.expand_dims(image, axis=0)
     return image
 
-# ✅ Custom CSS for improved styling
+# ✅ Custom CSS for the Light Theme
 st.markdown("""
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-        /* Background and main container */
-        .stApp {
-            background-color: #EAEFF5;
+        body, .stApp {
+            background-color: #f9f9ff;
         }
 
-        /* Title Styling */
+        /* Title */
         .title {
             font-family: 'Roboto', sans-serif;
             font-size: 44px;
             font-weight: 700;
             text-align: center;
-            color: #007BFF;
-            margin-bottom: 10px;
+            color: #4285f4;
+            margin-bottom: 5px;
         }
 
         /* Subtitle */
@@ -51,54 +50,57 @@ st.markdown("""
             font-family: 'Roboto', sans-serif;
             font-size: 18px;
             text-align: center;
-            color: #666;
+            color: #444;
             margin-bottom: 30px;
         }
 
         /* Upload Box */
         .stFileUploader {
             border-radius: 10px !important;
-            background-color: #20242A !important;
-            color: white !important;
+            background-color: #ffffff !important;
+            border: 2px solid #d4d4f7 !important;
+            color: #333 !important;
             padding: 15px !important;
         }
 
         /* Button Styling */
         .stButton>button {
-            background: linear-gradient(135deg, #6A11CB, #2575FC);
-            color: white;
+            background-color: #ebeaff;
+            color: black;
             font-size: 18px;
             padding: 12px 25px;
             border-radius: 8px;
-            border: none;
+            border: 1px solid #d4d4f7;
             cursor: pointer;
         }
         
         .stButton>button:hover {
-            background: linear-gradient(135deg, #2575FC, #6A11CB);
+            background-color: #dad5ff;
             transform: scale(1.05);
             transition: all 0.3s ease-in-out;
         }
 
-        /* Custom Styling for Results */
-        .result {
+        /* Results Styling */
+        .result-box {
             font-size: 22px;
             font-weight: bold;
             text-align: center;
-            padding: 10px;
+            padding: 12px;
             border-radius: 8px;
             width: 100%;
             margin-top: 20px;
         }
 
         .pneumonia {
-            background-color: #FF4C4C; /* Red */
-            color: white;
+            background-color: #ffcccc; /* Light Red */
+            color: #990000;
+            border: 1px solid #ff9999;
         }
 
         .normal {
-            background-color: #28A745; /* Green */
-            color: white;
+            background-color: #ccffcc; /* Light Green */
+            color: #006600;
+            border: 1px solid #99ff99;
         }
 
     </style>
@@ -120,7 +122,7 @@ if uploaded_file is not None:
         col1, col2 = st.columns([1, 2])
         
         with col1:
-            st.image(image, caption="Uploaded X-ray", use_column_width=True)
+            st.image(image, caption="Uploaded X-ray", use_container_width=True)
 
         with col2:
             st.info("🔍 Analyzing the X-ray...")
@@ -143,9 +145,9 @@ if uploaded_file is not None:
 
                 # Display results
                 if confidence > 0.5:
-                    st.markdown(f"<div class='result pneumonia'>⚠️ Pneumonia Detected (Confidence: {confidence:.2%})</div>", unsafe_allow_html=True)
+                    st.markdown(f"<div class='result-box pneumonia'>⚠️ Pneumonia Detected (Confidence: {confidence:.2%})</div>", unsafe_allow_html=True)
                 else:
-                    st.markdown(f"<div class='result normal'>✅ No Pneumonia Detected (Confidence: {1 - confidence:.2%})</div>", unsafe_allow_html=True)
+                    st.markdown(f"<div class='result-box normal'>✅ No Pneumonia Detected (Confidence: {1 - confidence:.2%})</div>", unsafe_allow_html=True)
             else:
                 st.error("⚠️ Model is not loaded. Please check your model file.")
 
@@ -154,6 +156,6 @@ if uploaded_file is not None:
 
 # ✅ Custom Button Styling
 st.markdown(
-    "<style>div.stButton > button {background-color: #0066cc; color: white; padding: 12px 25px; border-radius: 8px; font-size: 16px;}</style>",
+    "<style>div.stButton > button {background-color: #ebeaff; color: black; padding: 12px 25px; border-radius: 8px; font-size: 16px;}</style>",
     unsafe_allow_html=True
 )
