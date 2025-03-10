@@ -28,84 +28,8 @@ def preprocess_image(image):
 
 # ✅ Custom CSS for improved styling
 st.markdown("""
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-        /* Background and main container */
-        .stApp {
-            background-color: #ebeaff;
-            color: black;
-        }
-
-        /* Title Styling */
-        .title {
-            font-family: 'Roboto', sans-serif;
-            font-size: 44px;
-            font-weight: 700;
-            text-align: center;
-            color: black;
-            margin-bottom: 10px;
-        }
-
-        /* Subtitle */
-        .subtitle {
-            font-family: 'Roboto', sans-serif;
-            font-size: 18px;
-            text-align: center;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        /* Upload Box */
-        .stFileUploader {
-            border-radius: 10px !important;
-            background-color: #ebeaff !important;
-            color:#666 !important;
-            padding: 15px !important;
-        }
-
-        /* Button Styling */
-        .stButton>button {
-            background-color: #ebeaff;
-            color: white;
-            font-size: 18px;
-            padding: 12px 25px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .stButton>button:hover {
-            background: linear-gradient(135deg, #2575FC, #6A11CB);
-            transform: scale(1.07);
-            transition: all 0.3s ease-in-out;
-        }
-
-        /* Custom Styling for Results */
-        .result {
-            font-size: 22px;
-            font-weight: bold;
-            text-align: center;
-            padding: 10px;
-            border-radius: 8px;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        .pneumonia {
-            background-color: #FF4C4C; /* Red */
-            color: white;
-        }
-
-        .normal {
-            background-color: #28A745; /* Green */
-            color: white;
-        }
-        .info{
-        color: black
-        }
-
-    </style>
+       <h1 style="text-align:center; color:#0066cc;">🩺 Pneumonia Detection AI</h1>
+    <p style="text-align:center;"color: #0066cc>Upload a Chest X-ray image and let AI detect if it's pneumonic or normal.</p>
 """, unsafe_allow_html=True)
 
 # ✅ Display Title & Subtitle
